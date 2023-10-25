@@ -1,10 +1,13 @@
 package tn.esprit.tpfoyer.Control;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.Entity.Chambre;
 import tn.esprit.tpfoyer.Service.IchambreService;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
+@RequestMapping("/chambre")
 public class ChambreRestController {
     IchambreService chambreService;
 
@@ -21,12 +24,15 @@ public class ChambreRestController {
         Chambre chambre = chambreService.retrieveChambre(chId);
         return chambre;
     }
-    // http://localhost:8080/tpfoyer/chambre/add-chambre
+
+
+    //http://localhost:8080/tpfoyer/chambre/add-chambre
     @PostMapping("/add-chambre")
     public Chambre addChambre(@RequestBody Chambre c) {
         Chambre chambre = chambreService.addChambre(c);
         return chambre;
     }
+
     // http://localhost:8080/tpfoyer/chambre/remove-chambre/{chambre-id}
     @DeleteMapping("/remove-chambre/{chambre-id}")
     public void removeChambre(@PathVariable("chambre-id") Long chId) {
@@ -38,4 +44,6 @@ public class ChambreRestController {
         Chambre chambre = chambreService.modifyChambre(c);
         return chambre;
     }
+
+
 }

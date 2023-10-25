@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
  public class ChambreServiceImpl implements IchambreService {
+
     ChambreRepository chambreRepository;
     public List<Chambre> retrieveAllChambres() {
         return chambreRepository.findAll();
